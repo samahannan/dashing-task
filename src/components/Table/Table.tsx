@@ -172,7 +172,7 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
               const title = item[key].label;
               const direction = item[key].order;
               return (
-                <div className="col">
+                <div className="col" key={key}>
                   {title}
                   <SortIcon
                     classes={`${direction !== "" ? "active" : ""} ${direction}`}
@@ -243,13 +243,13 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
                   cy="12"
                   r="10"
                   stroke="#1C274C"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
                 <path
                   d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"
                   stroke="#1C274C"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>

@@ -64,7 +64,10 @@ export default function Login({
               <h5>Password must contain</h5>
               <ul>
                 {PASSWORD_RULES.map(({ label, regex }) => (
-                  <li className={password.match(regex) ? "active" : ""}>
+                  <li
+                    className={password.match(regex) ? "active" : ""}
+                    key={`pass-${label}`}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
