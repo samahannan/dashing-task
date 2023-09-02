@@ -1,0 +1,9 @@
+.product_form {
+  &.loading {
+    opacity: 0.5;
+  }
+  .form_actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

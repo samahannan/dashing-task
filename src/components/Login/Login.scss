@@ -1,0 +1,52 @@
+.login_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  position: relative;
+  top: 30px;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+  &.visible {
+    top: 0;
+    opacity: 1;
+  }
+  .card {
+    width: 450px;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+.password_state {
+  margin-bottom: 15px;
+  font-size: 14px;
+  h5 {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  ul li {
+    margin-bottom: 8px;
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+    .checkmark {
+      margin-right: 8px;
+    }
+    &.active {
+      opacity: 1;
+      .checkmark {
+        margin-right: 8px;
+      }
+    }
+  }
+}

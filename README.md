@@ -1,31 +1,21 @@
-# Create React App
-
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
-
-## Deploy Your Own
-
-Deploy your own Create React App project with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
-
-_Live Example: https://create-react-template.vercel.app/_
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes. You may also see any lint errors in the console.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### `npm test`
+## Project Notes
 
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+App opens to login component, you can login with any valid password to view the table component.
+Default role is "viewer". You can login to "editor" more by using the password "P@ssw0rd123".
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+Table is populated with dummy API data being fetched from the website "https://dummyjson.com/".
+Adding/Deleting/Editing a new product will not persist on their server.
+It will simulate a POST/DELETE/PUT request and will return the new updated product object.
+In this case I'm injecting it into the state. Refreshing the page will refetch the original data.
