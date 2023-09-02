@@ -9,7 +9,6 @@ export default function Login({
   successCallback: (role: boolean) => void;
 }) {
   const [loaded, setLoaded] = useState(false);
-
   const [password, setPassword] = useState("");
 
   useEffect(() => {

@@ -19,9 +19,13 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
   const [fetchUrl, setFetchUrl] = useState(`${BASE_URL}?limit=10`);
   const [fetchOptions, setFetchOptions] = useState({});
 
+  // Custom Hook for fetching APIs
   const { data, isLoading, error } = useFetch(fetchUrl, fetchOptions);
+
+  // shapedProduct will always have the visible products (what the user sees, ex: sorted)
   const [shapedProducts, setShapedProducts] = useState<Product[]>([]);
 
+  // Modal popup for editing/adding form
   const [modalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState<"add" | "edit" | "">("");
 
@@ -43,6 +47,7 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
     }
   }, [data]);
 
+  // Sorting Function
   const handleSort = (
     value: string,
     shapedProducts: Product[],
@@ -94,13 +99,23 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
     });
     setShapedProducts(sortedArray);
   };
+
+  // active product is whatever product we are currently editing
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
 
   if (error) {
     return <>Something went wrong</>;
   }
 
-  const handleSearch = (searchTerm: string) => {};
+  const handleSearch = (searchTerm: string) => {
+    const searchArray: any = data.products.filter(
+      (o: any) =>
+        o.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        o.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        o.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setShapedProducts(searchArray);
+  };
 
   const handleEdit = ({ brand, category, id, price, title }: Product) => {
     setIsModalOpen(true);
@@ -209,6 +224,9 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
                 )}
               </div>
             ))}
+          {data && shapedProducts.length === 0 && (
+            <div className="row no_result">No products available.</div>
+          )}
           {isAdmin && (
             <div className="row table_add" onClick={() => handleAdd()}>
               <span>Add Product</span>
@@ -248,11 +266,18 @@ export default function Table({ isAdmin }: { isAdmin: boolean }) {
           successCallback={(data: Product) => {
             // handle add or edit
             if (status === "add") {
+              // add new product
               setShapedProducts((prevProducts) => [data, ...prevProducts]);
+            } else {
+              // replace edited product
+              const { id } = data;
+              const updatedProducts = shapedProducts.map((product) =>
+                product.id === id ? data : product
+              );
+
+              setShapedProducts(updatedProducts);
             }
-            console.log("shaped", shapedProducts);
             setIsModalOpen(false);
-            console.log("successCallback", data);
           }}
           defaultData={activeProduct}
           type={status}
