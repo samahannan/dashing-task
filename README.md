@@ -1,3 +1,5 @@
+Vercel link: https://dashing-task.vercel.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -19,3 +21,6 @@ Table is populated with dummy API data being fetched from the website "https://d
 Adding/Deleting/Editing a new product will not persist on their server.
 It will simulate a POST/DELETE/PUT request and will return the new updated product object.
 In this case I'm injecting it into the state. Refreshing the page will refetch the original data.
+
+- Please note deleting an object you added yourself will result in an error.
+-
